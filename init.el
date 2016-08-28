@@ -21,7 +21,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (multiple-cursors ruby-guard rspec-mode yaml-mode web-mode spaceline smartparens robe projectile-rails pallet neotree monokai-theme js2-mode init-loader highlight-indentation helm-projectile exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
+    (restclient-helm multiple-cursors ruby-guard rspec-mode yaml-mode web-mode spaceline smartparens robe projectile-rails pallet neotree monokai-theme js2-mode init-loader highlight-indentation helm-projectile exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

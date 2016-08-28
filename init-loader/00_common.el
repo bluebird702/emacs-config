@@ -1,6 +1,5 @@
 ; 00_Common.el
-; auto-complete by company
-(add-hook 'after-init-hook 'global-company-mode)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ; helm
 (require 'helm-config)
@@ -92,3 +91,18 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+; company
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-minimum-prefix-length 1)
+;(setq company-transformers '(company-sort-by-occurrence))
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+(setq-default company-backends '((company-yasnippet
+                                  company-files
+                                  )
+                                 company-keywords
+                                 company-capf
+                                 ))

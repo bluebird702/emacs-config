@@ -34,6 +34,7 @@
 (depends-on "powerline")
 (depends-on "projectile")
 (depends-on "projectile-rails")
+(depends-on "restclient-helm")
 (depends-on "robe")
 (depends-on "rspec-mode")
 (depends-on "ruby-guard")
