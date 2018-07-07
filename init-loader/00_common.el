@@ -1,14 +1,19 @@
 ; 00_Common.el
-(fset 'yes-or-no-p 'y-or-n-p)
+;(fset 'yes-or-no-p 'y-or-n-p)
+
+; flycheck
+(global-flycheck-mode)
+(package-install 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
+(eval-after-load "flycheck" '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+(with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
 
 ; helm
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
-; 한글 관련
-(setq-default coding-system 'utf-8)
-(setq default-process-coding-system '(utf-8-hfs . utf-8-hfs))
 
 ; ansi-term 설정
 (when (memq window-system '(mac ns))
@@ -36,6 +41,8 @@
 
 ; backup files
 (setq make-backup-files nil)
+(setq auto-save-default nil)
+
 (setq backup-directory-alist
     `((".*" . "~/.saves")))	
 (setq auto-save-file-name-transforms
@@ -56,7 +63,7 @@
           (progn
             (neotree-dir project-dir)
             (neotree-find file-name))
-        (message "Could not find git project root."))))
+       (message "Could not find git project root."))))
 
 ; spaceline
 (require 'spaceline-config)
@@ -75,11 +82,11 @@
 (setq linum-format "%d ")
 
 ; projectile
-(projectile-global-mode)
-(setq projectile-enable-caching nil)
-(setq projectile-require-project-root nil)
-(require 'helm-projectile)
-(helm-projectile-on)
+;(projectile-global-mode)
+;(setq projectile-enable-caching nil)
+;(setq projectile-require-project-root nil)
+;(require 'helm-projectile)
+;(helm-projectile-on)
 
 ; smartparens
 (smartparens-global-mode)
@@ -92,6 +99,12 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
+;; https://superuser.com/questions/313398/how-to-prevent-the-symbols-function-definition-is-void-error-when-running-em
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
+
 ; company
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-tooltip-limit 20)                      ; bigger popup window
@@ -101,8 +114,24 @@
 ;(setq company-transformers '(company-sort-by-occurrence))
 (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 (setq-default company-backends '((company-yasnippet
-                                  company-files
-                                  )
+                                  company-files)
                                  company-keywords
                                  company-capf
                                  ))
+
+
+
+; buffer를 닫으면 윈도우도 닫히도록 처리
+(substitute-key-definition 'kill-buffer
+			   'kill-buffer-and-window)
+
+; https://www.johndcook.com/blog/2016/11/30/setting-up-emacs-shell-on-a-mac/
+(add-to-list 'exec-path "/usr/local/bin")
+
+; 한글 관련 
+(set-default-coding-systems 'utf-8-hfs)
+(set-default-process-coding-system '(utf-8-hfs . utf-8-hfs))
+(add-hook 'term-exec-hook
+          (function
+           (lambda ()
+             (set-buffer-process-coding-system 'utf-8-hfs-mac 'utf-8-hfs-mac))))

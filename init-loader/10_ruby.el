@@ -1,8 +1,8 @@
 ; 10_ruby.el
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-(setq inf-ruby-default-implementation "pry")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(projectile-rails-global-mode)
+(define-key projectile-rails-mode-map (kbd "s-r") 'hydra-projectile-rails/body)
+;(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 (autoload 'enh-ruby-mode "enh-ruby-mode" "Major mode for ruby files" t)
 (add-to-list 'auto-mode-alist
@@ -10,9 +10,10 @@
 
 (autoload 'robe-mode "robe" "Code navigation, documentation lookup and completion for Ruby" t nil)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
+(setq robe-turn-on-eldoc nil)
 
 (eval-after-load 'company
-  '(push 'company-robe company-backends))
+/  '(push 'company-robe company-backends))
 
 (add-hook 'enh-ruby-mode-hook
-          (lambda () (highlight-indentation-current-column-mode)))
+         (lambda () (highlight-indentation-current-column-mode)))
