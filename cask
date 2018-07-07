@@ -1,4 +1,5 @@
 (source gnu)
+(source marmalade)
 (source melpa)
 (source melpa-stable)
 
@@ -33,6 +34,7 @@
 (depends-on "inflections")
 (depends-on "init-loader")
 (depends-on "js2-mode")
+<<<<<<< HEAD
 (depends-on "json-mode")
 (depends-on "json-reformat")
 (depends-on "json-snatcher")
@@ -41,9 +43,13 @@
 (depends-on "markdown-mode")
 (depends-on "markdown-preview-eww")
 (depends-on "markdown-preview-mode")
+=======
+(depends-on "markdown-mode")
+>>>>>>> 7ead0165e0c2e59cfba664ee7ba7e78fdb8e688c
 (depends-on "monokai-theme")
 (depends-on "multiple-cursors")
 (depends-on "neotree")
+(depends-on "org2jekyll")
 (depends-on "package-build")
 (depends-on "pallet")
 (depends-on "pkg-info")
