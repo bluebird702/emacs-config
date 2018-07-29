@@ -16,22 +16,18 @@
 (pallet-mode t)
 
 (init-loader-load "~/.emacs.d/init-loader/")
+(put 'set-goal-column 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" default)))
- '(org-agenda-files (quote ("~/Work/Personal/Docs/ProgrammingInScala.org")))
  '(package-selected-packages
    (quote
-    (go-mode markdown-preview-mode markdown-preview-eww markdown-mode with-editor json-mode flycheck-pos-tip flycheck-color-mode-line flycheck hydra async cask clojure-mode f git-commit inf-ruby inflections magit-popup package-build powerline restclient s sbt-mode scala-mode seq spinner yasnippet magit feature-mode ansible company dash helm helm-core projectile rake restclient-helm multiple-cursors ruby-guard rspec-mode yaml-mode web-mode spaceline smartparens robe projectile-rails pallet neotree monokai-theme js2-mode init-loader highlight-indentation helm-projectile exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
+    (htmlize ansible feature-mode flycheck-color-mode-line flycheck-pos-tip hydra json-mode json-reformat json-snatcher magit magit-popup markdown-preview-eww markdown-preview-mode pos-tip with-editor yaml-mode web-mode spaceline smartparens rspec-mode robe restclient-helm projectile-rails pallet org2jekyll neotree multiple-cursors monokai-theme markdown-mode js2-mode init-loader highlight-indentation helm-projectile go-mode exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(put 'set-goal-column 'disabled nil)
