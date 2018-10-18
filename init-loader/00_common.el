@@ -1,5 +1,7 @@
-; 00_Common.el
+;00_Common.el
 ;(fset 'yes-or-no-p 'y-or-n-p)
+(global-visual-line-mode)
+(set-face-attribute 'default nil :height 150)
 
 ; flycheck
 (global-flycheck-mode)
@@ -50,9 +52,11 @@
 
 ; neotree
 (require 'neotree)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (setq neo-smart-open t)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (global-set-key [f8] 'neotree-toggle)
+(neotree-show)
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
