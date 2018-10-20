@@ -2,6 +2,7 @@
 (source melpa)
 (source melpa-stable)
 
+(depends-on "0blayout")
 (depends-on "ag")
 (depends-on "all-the-icons")
 (depends-on "ansible")
@@ -15,6 +16,7 @@
 (depends-on "company")
 (depends-on "company-go")
 (depends-on "dash")
+(depends-on "elpy")
 (depends-on "enh-ruby-mode")
 (depends-on "ensime")
 (depends-on "epl")
@@ -49,6 +51,7 @@
 (depends-on "monokai-theme")
 (depends-on "multiple-cursors")
 (depends-on "neotree")
+(depends-on "org-jira")
 (depends-on "org2jekyll")
 (depends-on "package-build")
 (depends-on "pallet")

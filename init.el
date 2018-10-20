@@ -24,7 +24,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-go all-the-icons flycheck-golangci-lint go-tag htmlize ansible feature-mode flycheck-color-mode-line flycheck-pos-tip hydra json-mode json-reformat json-snatcher magit magit-popup markdown-preview-eww markdown-preview-mode pos-tip with-editor yaml-mode web-mode spaceline smartparens rspec-mode robe restclient-helm projectile-rails pallet org2jekyll neotree multiple-cursors monokai-theme markdown-mode js2-mode init-loader highlight-indentation helm-projectile go-mode exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
+    (org-jira elpy 0blayout company-go all-the-icons flycheck-golangci-lint go-tag htmlize ansible feature-mode flycheck-color-mode-line flycheck-pos-tip hydra json-mode json-reformat json-snatcher magit magit-popup markdown-preview-eww markdown-preview-mode pos-tip with-editor yaml-mode web-mode spaceline smartparens rspec-mode robe restclient-helm projectile-rails pallet org2jekyll neotree multiple-cursors monokai-theme markdown-mode js2-mode init-loader highlight-indentation helm-projectile go-mode exec-path-from-shell ensime enh-ruby-mode cider bundler auto-complete anzu ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
