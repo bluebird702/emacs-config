@@ -6,7 +6,7 @@
 (require 'gnutls)
 (add-to-list 'gnutls-trustfiles "/usr/local/etc/openssl/cert.pem")
 
-(require 'cask "~/.cask/cask.el")
+(require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
