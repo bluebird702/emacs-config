@@ -1,5 +1,6 @@
-;00_Common.el
-;(fset 'yes-or-no-p 'y-or-n-p)
+;;; 00.common.el
+;;; Commentary: 테스트
+
 (global-visual-line-mode)
 (set-face-attribute 'default nil :height 150)
 
@@ -11,11 +12,43 @@
 (eval-after-load "flycheck" '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
 
-; helm
-(require 'helm-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+; helm 일단 잠깐 쓰지 않기
+;(require 'helm-config)
+;(global-set-key (kbd "M-x") 'helm-M-x)
+;(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
+; ivy
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key (kbd "<f6>") 'ivy-resume)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+
+; which key
+(require 'which-key)
+(which-key-mode)
+
+; projectile
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching nil)
+(setq projectile-require-project-root nil)
+;(require 'helm-projectile)
+(counsel-projectile-mode)
 
 ; ansi-term 설정
 (when (memq window-system '(mac ns))
@@ -23,14 +56,17 @@
 
 ; buffer
 (defalias 'list-buffers 'ibuffer)
-(ido-mode 1)
 
 ; 최근 파일 찾기
 (recentf-mode 1)
-(global-set-key (kbd "C-x C-r") 'helm-recentf)
+(global-set-key (kbd "C-x C-r") 'ivy-recentf)
 
 ; window
 (windmove-default-keybindings)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
@@ -45,10 +81,8 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
-(setq backup-directory-alist
-    `((".*" . "~/.saves")))	
-(setq auto-save-file-name-transforms
-    `((".*" "~/.saves" t)))	
+(setq backup-directory-alist `((".*" . "~/.saves")))
+(setq auto-save-file-name-transforms `((".*" "~/.saves" t)))
 
 ; neotree
 (require 'neotree)
@@ -85,13 +119,6 @@
 (global-linum-mode t)
 (setq linum-format "%d ")
 
-; projectile
-;(projectile-global-mode)
-;(setq projectile-enable-caching nil)
-;(setq projectile-require-project-root nil)
-;(require 'helm-projectile)
-;(helm-projectile-on)
-
 ; smartparens
 (smartparens-global-mode)
 (show-smartparens-global-mode t)
@@ -111,6 +138,8 @@
 
 ; company
 (add-hook 'after-init-hook 'global-company-mode)
+
+(require 'company)
 (setq company-tooltip-limit 20)                      ; bigger popup window
 (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
 (setq company-echo-delay 0)                          ; remove annoying blinking
@@ -126,16 +155,19 @@
 
 
 ; buffer를 닫으면 윈도우도 닫히도록 처리
-(substitute-key-definition 'kill-buffer
-			   'kill-buffer-and-window)
+(substitute-key-definition 'kill-buffer 'kill-buffer-and-window (current-global-map))
 
 ; https://www.johndcook.com/blog/2016/11/30/setting-up-emacs-shell-on-a-mac/
 (add-to-list 'exec-path "/usr/local/bin")
 
-; 한글 관련 
+; 한글 관련
+(set-terminal-coding-system 'utf-8-unie)
 (set-default-coding-systems 'utf-8-hfs)
-(set-default-process-coding-system '(utf-8-hfs . utf-8-hfs))
-(add-hook 'term-exec-hook
-          (function
-           (lambda ()
-             (set-buffer-process-coding-system 'utf-8-hfs-mac 'utf-8-hfs-mac))))
+(setq default-process-coding-system '(utf-8-hfs . utf-8-hfs))
+;(add-hook 'term-exec-hook
+;          (function
+;           (lambda ()
+;             (set-buffer-process-coding-system 'utf-8-hfs-mac 'utf-8-hfs-mac))))
+
+
+
