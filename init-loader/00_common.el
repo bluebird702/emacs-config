@@ -89,6 +89,7 @@
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (setq neo-smart-open t)
 (setq projectile-switch-project-action 'neotree-projectile-action)
+(setq-default neo-show-hidden-files t)
 (global-set-key [f8] 'neotree-toggle)
 (neotree-show)
 
